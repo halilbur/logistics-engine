@@ -1,15 +1,15 @@
 ﻿services:  
-  ${DB_USERNAME}s:
-    image: ${DB_USERNAME}s:16-alpine # High-performance, lightweight version
+  postgres:
+    image: postgres:16-alpine
     container_name: logistics-db
     environment:
       - POSTGRES_USER=${DB_USERNAME}
-      - POSTGRES_PASSWORD=${DB_USERNAME}1234
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_DB=logistics_db
     ports:
-      - "5432:5432" # Expose to your WSL/Windows host
+      - "5432:5432"
     volumes:
-      - ${DB_USERNAME}s_data:/var/lib/${DB_USERNAME}sql/data
+      - postgres_data:/var/lib/postgresql/data
 
 volumes:
-  ${DB_USERNAME}s_data:
+  postgres_data:
